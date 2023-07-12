@@ -38,39 +38,36 @@ jobs:
     - run: git checkout HEAD^2
       if: ${{ github.event_name == 'pull_request' }} 
 
-      # Java is required to run ScanCentral Client, and may be required for your build
-      # Java version to use depends on the Java version required to run your build (if any),
-      # and the Java version supported by the ScanCentral Client version that you are running
-    - name: Setup Java
-    - uses: actions/setup-java@v1
-      with:
-        java-version: 11
+
+    #- name: Setup Java
+    #- uses: actions/setup-java@v1
+    #  with:
+    #    java-version: 11
 
       ### Set up Fortify ScanCentral Client ###
     - name: Download Fortify ScanCentral Client
-    - uses: fortify/gha-setup-scancentral-client@v1   
+      uses: fortify/gha-setup-scancentral-client@v1   
       with:
-       version: 23.1.0                                      # On-prem customers should specify a client version that matches their ScanCentral environment
+        version: 23.1.0                                      # On-prem customers should specify a client version that matches their ScanCentral environment
                                                                # FoD customers usually should not specify a version but rather rely on the default version
-       client-auth-token: u2a6k3He3ZduHMZGfOi2s0kFtUcdbbXr66aoaw1Yy86s2bOB  # Optional, but required if ScanCentral Controller requires client authentication
+        client-auth-token: u2a6k3He3ZduHMZGfOi2s0kFtUcdbbXr66aoaw1Yy86s2bOB  # Optional, but required if ScanCentral Controller requires client authentication
 
       ### Run Fortify ScanCentral Client ###
       # Update BUILD_OPTS based on the ScanCentral Client documentation and your project's included tech stack(s).
       #   ScanCentral Client will download dependencies for maven, gradle and msbuild projects.
       #   For other build tools, add your build commands to the workflow to download necessary dependencies and prepare according to Fortify SCA documentation.
     - name: Perform SAST Scan
-    - run: scancentral -url https://scsastctrl.dhl.fortifyhosted.com/scancentral-ctrl/ start $BUILD_OPTS -upload -application $APPLICATION -version $VERSION -uptoken 57ffe8ab-7b4d-44c9-85a0-2aa84285fa80
-      env:                                            
-
-          APPLICATION: "IWAPharmacyJava-sample"
-          VERSION: "dev"
-          BUILD_OPTS: "-bt mvn"
+      run: scancentral -url https://scsastctrl.dhl.fortifyhosted.com/scancentral-ctrl/ start $BUILD_OPTS -upload -application $APPLICATION -version $VERSION -uptoken 57ffe8ab-7b4d-44c9-85a0-2aa84285fa80
+      env:                               
+        APPLICATION: "IWAPharmacyJava-sample"
+        VERSION: "dev"
+        BUILD_OPTS: "-bt mvn"
 
       ### Archive ScanCentral Client logs on failure ###
     - name: Save ScanCentral Logs
-    - uses: actions/upload-artifact@v2                
+      uses: actions/upload-artifact@v2                
       if: failure()
       with:
-           name: scancentral-logs
-           path: ~/.fortify/scancentral/log
+         name: scancentral-logs
+         path: ~/.fortify/scancentral/log
 
