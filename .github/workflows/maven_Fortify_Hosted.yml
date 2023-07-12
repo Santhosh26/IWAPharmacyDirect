@@ -25,6 +25,7 @@ jobs:
     # Use the appropriate runner for building your source code
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
     - name: Setup Java
       uses: actions/setup-java@v1
       with:
