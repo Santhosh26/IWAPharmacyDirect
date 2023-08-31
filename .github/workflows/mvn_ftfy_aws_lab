@@ -40,8 +40,8 @@ jobs:
     - name: Perform SAST Scan
       run: scancentral -url http://52.67.113.58:9080/scancentral-ctrl/ start -bt mvn -upload -application $APPLICATION -version $VERSION -uptoken daa2f0d1-4807-4211-bf0e-55de25548817
       env:                               
-        APPLICATION: "IWAPharmacyJava-sample"
-        VERSION: "dev"
+        APPLICATION: "IWA"
+        VERSION: "2"
         BUILD_OPTS: "-bt mvn"
 
 
