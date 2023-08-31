@@ -1,0 +1,48 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+  Fortify-SAST:
+    # Use the appropriate runner for building your source code
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+
+  ### Set up Fortify ScanCentral Client ###
+    - name: Download Fortify ScanCentral Client
+      uses: fortify/gha-setup-scancentral-client@v1   
+      with:
+        version: 23.1.0                                     
+        client-auth-token: secret
+    - name: Perform SAST Scan
+      run: scancentral -url http://52.67.113.58:9080/scancentral-ctrl/ start -bt mvn -upload -application $APPLICATION -version $VERSION -uptoken daa2f0d1-4807-4211-bf0e-55de25548817
+      env:                               
+        APPLICATION: "IWAPharmacyJava-sample"
+        VERSION: "dev"
+        BUILD_OPTS: "-bt mvn"
+
+
+
