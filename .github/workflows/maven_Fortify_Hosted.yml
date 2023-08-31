@@ -40,8 +40,8 @@ jobs:
     - name: Perform SAST Scan
       run: scancentral -url https://scsastctrl.dhl.fortifyhosted.com/scancentral-ctrl/ start -bt mvn -upload -application $APPLICATION -version $VERSION -uptoken 57ffe8ab-7b4d-44c9-85a0-2aa84285fa80
       env:                               
-        APPLICATION: "IWAPharmacyJava-sample"
-        VERSION: "dev"
+        APPLICATION: "IWA"
+        VERSION: "2"
         BUILD_OPTS: "-bt mvn"
 
 
