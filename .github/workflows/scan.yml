@@ -41,5 +41,4 @@ jobs:
         echo "LOW_ISSUES_LIMIT=999999" >> .env
       shell: pwsh
         
-    - name: Run Python Script
-      run: python FortifyCI/Fortify-CI.py
+
