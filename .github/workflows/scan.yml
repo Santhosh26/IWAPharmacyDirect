@@ -15,7 +15,8 @@ jobs:
 
     - name: Create .env file
       run: |
-        if (Test-Path -Path .env) { Remove-Item -Path .env }
+        $envPath = "FortifyCI\.env"
+        if (Test-Path -Path $envPath) { Remove-Item -Path $envPath }
         echo "SCANCENTRAL_PACKAGE_BT=mvn" >> .env
         echo "SCANCENTRAL_PACKAGE_BF=pom.xml" >> .env
         echo "SCANCENTRAL_PACKAGE_O=fortifyscanpackage.zip" >> .env
