@@ -1,0 +1,43 @@
+name: Run Python Script on Another Repo
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    
+    steps:
+    - name: Checkout Current Repo
+      uses: actions/checkout@v4
+      
+    - name: Clone Another Repo
+      run: git clone https://github.com/Santhosh26/FortifyCI.git   
+
+    - name: Create .env file
+      run: |
+        echo "SCANCENTRAL_PACKAGE_BT=mvn" >> .env
+        echo "SCANCENTRAL_PACKAGE_BF=pom.xml" >> .env
+        echo "SCANCENTRAL_PACKAGE_O=fortifyscanpackage.zip" >> .env
+        echo "SSC_URL=http://ftfy-sast:8080/ssc" >> .env
+        echo "SSC_TOKEN=Mzg3ODBjZWQtM2Q3NS00MWJiLWE2ODgtNzc0OGM5NGMzMTcw" >> .env
+        echo "SSC_SAST_SECRET=secret" >> .env
+        echo "SSC_APPVERSION_ID=10009" >> .env
+        echo "SSC_APPNAME=IWA" >> .env
+        echo "SSC_APPVERSION_NAME=Test" >> .env
+        echo "SSC_SENSOR_VERSION=23.1" >> .env
+        echo "FORTIFY_UTILITY_PATH=C:\FortifyBugTrackerUtility-4.11\FortifyBugTrackerUtility-4.11.jar" >> .env
+        echo "FORTIFY_CONFIG_FILE=C:\FortifyBugTrackerUtility-4.11\SSCToJira.xml" >> .env
+        echo "SSC_USERNAME=admin" >> .env
+        echo "SSC_PASSWORD=fh#@673$#byuQWS" >> .env
+        echo "JIRA_URL=http://localhost:8181/" >> .env
+        echo "JIRA_USERNAME=admin" >> .env
+        echo "JIRA_PASSWORD=fh#@673$#byuQWS" >> .env
+        echo "JIRA_PROJECT_KEY=IWA" >> .env
+        echo "CRITICAL_ISSUES_LIMIT=99999" >> .env
+        echo "HIGH_ISSUES_LIMIT=999999" >> .env
+        echo "MEDIUM_ISSUES_LIMIT=99999" >> .env
+        echo "LOW_ISSUES_LIMIT=999999" >> .env
+        |
+        
+    - name: Run Python Script
+      run: python FortifyCI/Fortify-CI.py
