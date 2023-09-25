@@ -17,28 +17,28 @@ jobs:
       run: |
         $envPath = "FortifyCI\.env"
         if (Test-Path -Path $envPath) { Remove-Item -Path $envPath }
-        echo "SCANCENTRAL_PACKAGE_BT=mvn" >> .env
-        echo "SCANCENTRAL_PACKAGE_BF=pom.xml" >> .env
-        echo "SCANCENTRAL_PACKAGE_O=fortifyscanpackage.zip" >> .env
-        echo "SSC_URL=http://ftfy-sast:8080/ssc" >> .env
-        echo "SSC_TOKEN=Mzg3ODBjZWQtM2Q3NS00MWJiLWE2ODgtNzc0OGM5NGMzMTcw" >> .env
-        echo "SSC_SAST_SECRET=secret" >> .env
-        echo "SSC_APPVERSION_ID=10009" >> .env
-        echo "SSC_APPNAME=IWA" >> .env
-        echo "SSC_APPVERSION_NAME=Test" >> .env
-        echo "SSC_SENSOR_VERSION=23.1" >> .env
-        echo "FORTIFY_UTILITY_PATH=C:\FortifyBugTrackerUtility-4.11\FortifyBugTrackerUtility-4.11.jar" >> .env
-        echo "FORTIFY_CONFIG_FILE=C:\FortifyBugTrackerUtility-4.11\SSCToJira.xml" >> .env
-        echo "SSC_USERNAME=admin" >> .env
-        echo "SSC_PASSWORD=fh#@673$#byuQWS" >> .env
-        echo "JIRA_URL=http://localhost:8181/" >> .env
-        echo "JIRA_USERNAME=admin" >> .env
-        echo "JIRA_PASSWORD=fh#@673$#byuQWS" >> .env
-        echo "JIRA_PROJECT_KEY=IWA" >> .env
-        echo "CRITICAL_ISSUES_LIMIT=99999" >> .env
-        echo "HIGH_ISSUES_LIMIT=999999" >> .env
-        echo "MEDIUM_ISSUES_LIMIT=99999" >> .env
-        echo "LOW_ISSUES_LIMIT=999999" >> .env
+        echo "SCANCENTRAL_PACKAGE_BT=mvn" >> $envPath
+        echo "SCANCENTRAL_PACKAGE_BF=pom.xml" >> $envPath
+        echo "SCANCENTRAL_PACKAGE_O=fortifyscanpackage.zip" >> $envPath
+        echo "SSC_URL=http://ftfy-sast:8080/ssc" >> $envPath
+        echo "SSC_TOKEN=Mzg3ODBjZWQtM2Q3NS00MWJiLWE2ODgtNzc0OGM5NGMzMTcw" >> $envPath
+        echo "SSC_SAST_SECRET=secret" >> $envPath
+        echo "SSC_APPVERSION_ID=10009" >> $envPath
+        echo "SSC_APPNAME=IWA" >> $envPath
+        echo "SSC_APPVERSION_NAME=Test" >> $envPath
+        echo "SSC_SENSOR_VERSION=23.1" >> $envPath
+        echo "FORTIFY_UTILITY_PATH=C:\FortifyBugTrackerUtility-4.11\FortifyBugTrackerUtility-4.11.jar" >> $envPath
+        echo "FORTIFY_CONFIG_FILE=C:\FortifyBugTrackerUtility-4.11\SSCToJira.xml" >> $envPath
+        echo "SSC_USERNAME=admin" >> $envPath
+        echo "SSC_PASSWORD=fh#@673$#byuQWS" >> $envPath
+        echo "JIRA_URL=http://localhost:8181/" >> $envPath
+        echo "JIRA_USERNAME=admin" >> $envPath
+        echo "JIRA_PASSWORD=fh#@673$#byuQWS" >> $envPath
+        echo "JIRA_PROJECT_KEY=IWA" >> $envPath
+        echo "CRITICAL_ISSUES_LIMIT=99999" >> $envPath
+        echo "HIGH_ISSUES_LIMIT=999999" >> $envPath
+        echo "MEDIUM_ISSUES_LIMIT=99999" >> $envPath
+        echo "LOW_ISSUES_LIMIT=999999" >> $envPath
       shell: pwsh
         
 
