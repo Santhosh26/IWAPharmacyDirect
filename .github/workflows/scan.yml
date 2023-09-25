@@ -34,6 +34,9 @@ jobs:
         echo "SSC_USERNAME=admin" >> $envPath
         echo "SSC_PASSWORD=fh#@673$#byuQWS" >> $envPath
         echo "JIRA_URL=http://localhost:8181/" >> $envPath
+        echo "JIRA_PROXY_HOST=" >> $envPath
+        echo "JIRA_PROXY_UNAME=" >> $envPath
+        echo "JIRA_PROXY_PASSWORD=" >> $envpath
         echo "JIRA_USERNAME=admin" >> $envPath
         echo "JIRA_PASSWORD=fh#@673$#byuQWS" >> $envPath
         echo "JIRA_PROJECT_KEY=IWA" >> $envPath
