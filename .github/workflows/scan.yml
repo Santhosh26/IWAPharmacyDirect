@@ -30,7 +30,7 @@ jobs:
         echo "FORTIFY_UTILITY_PATH=C:\FortifyBugTrackerUtility-4.11\FortifyBugTrackerUtility-4.11.jar" >> $envPath
         echo "FORTIFY_CONFIG_FILE=C:\FortifyBugTrackerUtility-4.11\SSCToJira.xml" >> $envPath
         echo "FCLI_PATH=C:\fcli-windows1.3\fcli.exe" >> $envPath
-        echo "SCANCENTRAL_PATH=C:\Program Files\Fortify\Fortify_SCA_23.1.0\bin\scancentral.bat"
+        echo "SCANCENTRAL_PATH=C:\Program Files\Fortify\Fortify_SCA_23.1.0\bin\scancentral.bat" >> $envPath
         echo "SSC_USERNAME=admin" >> $envPath
         echo "SSC_PASSWORD=fh#@673$#byuQWS" >> $envPath
         echo "JIRA_URL=http://localhost:8181/" >> $envPath
