@@ -44,7 +44,8 @@ jobs:
         echo "HIGH_ISSUES_LIMIT=999999" >> $envPath
         echo "MEDIUM_ISSUES_LIMIT=99999" >> $envPath
         echo "LOW_ISSUES_LIMIT=999999" >> $envPath
+        echo "FORTIFYVULEXP_PATH= C:\Users\Administrator\Downloads\FortifyVulnerabilityExporter\FortifyVulnerabilityExporter.jar" >> $envPath
       shell: pwsh
         
     - name: Run Python Script
-      run: python FortifyCI/Fortify-CI.py
+      run: python FortifyCI/Fortify-CI-github.py
