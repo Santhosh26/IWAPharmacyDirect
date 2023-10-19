@@ -47,5 +47,10 @@ jobs:
         echo "FORTIFYVULEXP_PATH= C:\Users\Administrator\Downloads\FortifyVulnerabilityExporter\FortifyVulnerabilityExporter.jar" >> $envPath
       shell: pwsh
         
-    - name: Run Python Script
+    - name: Run Fortify CI Scan
       run: python FortifyCI/Fortify-CI-github.py
+    # Import Fortify on Demand results to GitHub Security Code Scanning
+    - name: Import Fortify results in to GITHUB
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+       sarif_file: ./gh-fortify-sast.sarif
