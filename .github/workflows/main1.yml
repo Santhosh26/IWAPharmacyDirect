@@ -32,16 +32,4 @@ jobs:
           SSC_APPVERSION: InsecureForum:github
           # EXTRA_PACKAGE_OPTS: -bf custom-pom.xml
           SC_SAST_SENSOR_VERSION: 23.2
-      # Perform an evaluation
-      - name: Run evaluate  action
-        id: evaluate
-        uses: sonatype/actions/evaluate@v1
-        with:
-          iq-server-url: 'http://52.67.113.58:8070'
-          username: 'admin'
-          password: 'admin123'
-          application-id: IWA
-          scan-targets: package.json
-      # Print out the results
-      - name: Log evaluate action output
-        run: echo "${{ steps.evaluate.outputs.scan-id }} ${{ steps.evaluate.outputs.report-url }}"
+
